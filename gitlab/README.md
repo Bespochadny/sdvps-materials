@@ -1,6 +1,6 @@
 # Домашнее задание к занятию "«GitLab»" - Абанина Максима
 
-Задание 1
+## Задание 1
 Что нужно сделать:
 
 Разверните GitLab локально, используя Vagrantfile и инструкцию, описанные в этом репозитории.
@@ -8,13 +8,14 @@
 Зарегистрируйте gitlab-runner для этого проекта и запустите его в режиме Docker. Раннер можно регистрировать и запускать на той же виртуальной машине, на которой запущен GitLab.
 В качестве ответа в репозиторий шаблона с решением добавьте скриншоты с настройками раннера в проекте.
 
-[установленный Jenkins](https://github.com/Bespochadny/8-03-hw/edit/main/img/2.jpg)
-[запуск теста и сборка проекта в Jenkins](https://github.com/Bespochadny/8-03-hw/edit/main/img/3.jpg)
-[запуск теста и сборка проекта в Jenkins](https://github.com/Bespochadny/8-03-hw/edit/main/img/4.jpg)
+Решение: Я разворачивал Gitlab c использованием "Яндекс Клауда", готовая машина с ГитЛаб, как в вебинаре. На этой же машине я установил докер, установил и зарегистрировал раннер. 
+
+[Установленный Ranner](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/1.png)
+[Настройки Ranner](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/2.png)
 
 ---
 
-# Задание 2
+## Задание 2
 Что нужно сделать:
 
 Запушьте репозиторий на GitLab, изменив origin. Это изучалось на занятии по Git.
@@ -24,4 +25,11 @@
 файл gitlab-ci.yml для своего проекта или вставьте код в соответствующее поле в шаблоне;
 скриншоты с успешно собранными сборками.
 
+[Удачная сборка test_job](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/6.png)
+[Удачная сборка build_job](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/7.png)
 
+Очень долго происходили "танцы с бубном" для того чтобы сделать образ и смонтировать docker, упорно не хотел запускаться, либо не видел, либо чего-то не хватало. Заново монтировал ranner, повышал его привелегии, создавал группу - docker и добавлял туда пользователя. Удачная комбинация конфигов в файде gitlab-ci.yml, которая запустила строительство образа и его монтаж.
+[gitlab-ci.yml](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/9.png). 
+
+Кроме этого редактировал .toml файл правил привелегии с false на true, и в этом же ключе поправил конфиг старта докера, добавив --priveleges и в этоге "звезды сошлись" и сборка отработала "на зеленую"
+[правильная сборка](https://github.com/Bespochadny/sdvps-materials/edit/main/gitlab/IMAGE/8.png)
